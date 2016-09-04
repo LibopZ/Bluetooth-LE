@@ -1,6 +1,7 @@
 package uk.co.alt236.btlescan.activities;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -18,5 +19,21 @@ public class DB {
         db.close();
         dbHelper.close();
 
+    }
+
+    public static String[] selectbeacon(Context context,String uuid ){
+        DBHelper dbHelper = new DBHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Cursor cursor =  db.rawQuery("SELECT * FROM " + DBHelper.TABLE_NAME + " WHERE "+ DBHelper.COL_UUID + "= ? ", new String[]{uuid});
+
+        cursor.moveToFirst();
+        String[] res = new String[2];
+        while (!cursor.isAfterLast()){
+            res[0] = cursor.getString(cursor.getColumnIndex(DBHelper.COL_ITEM_NAME));
+            res[1] = cursor.getString(cursor.getColumnIndex(DBHelper.COL_DISTRANCE));
+            cursor.moveToNext();
+        }
+        return res;
     }
 }

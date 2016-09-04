@@ -72,4 +72,8 @@
     <string name="label_uuid">UUID:</string>
     <string name="label_updated">Updated:</string>
     <string name="label_decriptor">Descriptor:</string>
+    <string name="title_activity_show_beacon">Show_beacon</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

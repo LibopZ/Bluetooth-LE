@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,10 +36,12 @@ import uk.co.alt236.btlescan.util.Constants;
 import uk.co.alt236.btlescan.util.TimeFormatter;
 
 public class DeviceDetailsActivity extends AppCompatActivity {
-    String name;
+
     String uuid;
     String major;
     String dis;
+    EditText name;
+    Button btn_add;
     public static final String EXTRA_DEVICE = "extra_device";
     @Bind(android.R.id.list)
     protected ListView mList;
@@ -176,6 +180,20 @@ public class DeviceDetailsActivity extends AppCompatActivity {
 
         mList.setEmptyView(mEmpty);
 
+        name = (EditText) findViewById(R.id.beacon_name);
+        btn_add = (Button) findViewById(R.id.btn_add_beacon);
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //DB.insert(getApplicationContext(),uuid,""+name.getText(),dis,major);
+
+                Intent tt = new Intent(DeviceDetailsActivity.this,ScanActivity.class);
+                startActivity(tt);
+            }
+        });
+
+
         mDevice = getIntent().getParcelableExtra(EXTRA_DEVICE);
 
         pupulateDetails(mDevice);
@@ -241,7 +259,7 @@ public class DeviceDetailsActivity extends AppCompatActivity {
 //                appendHeader(adapter, getString(R.string.header_ibeacon_data));
                 appendIBeaconInfo(iBeaconData);
             }
-    DB.insert(getApplicationContext(),uuid,"test",dis,major);
+
         //}
 
 //        mList.setAdapter(adapter);
