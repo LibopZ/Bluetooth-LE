@@ -9,11 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class DB {
 
-    public static void insert(Context context, String uuid,String item_name,String distracne,String major ){
+    public static void insert(Context context, String address,String item_name,String distracne,String major ){
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        String sql = "INSERT INTO " + DBHelper.TABLE_NAME + "(" + DBHelper.COL_ITEM_NAME + ", " + DBHelper.COL_UUID + ", " + DBHelper.COL_DISTRANCE  +","+DBHelper.COL_MAJOR +  ") VALUES ('" + item_name + "', '" + uuid + "', '" + distracne + "','"+major + "')";
+        String sql = "INSERT INTO " + DBHelper.TABLE_NAME + "(" + DBHelper.COL_ITEM_NAME + ", " + DBHelper.COL_ADDRESS + ", " + DBHelper.COL_DISTRANCE  +","+DBHelper.COL_MAJOR +  ") VALUES ('" + item_name + "', '" + address + "', '" + distracne + "','"+major + "')";
         db.execSQL(sql);
 
         db.close();
@@ -25,7 +25,7 @@ public class DB {
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        Cursor cursor =  db.rawQuery("SELECT * FROM " + DBHelper.TABLE_NAME + " WHERE "+ DBHelper.COL_UUID + "= ? ", new String[]{uuid});
+        Cursor cursor =  db.rawQuery("SELECT * FROM " + DBHelper.TABLE_NAME + " WHERE "+ DBHelper.COL_ADDRESS + "= ? ", new String[]{uuid});
 
         cursor.moveToFirst();
         String[] res = new String[2];

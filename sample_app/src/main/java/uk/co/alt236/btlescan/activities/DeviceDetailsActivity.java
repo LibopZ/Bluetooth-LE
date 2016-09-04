@@ -40,6 +40,7 @@ public class DeviceDetailsActivity extends AppCompatActivity {
     String uuid;
     String major;
     String dis;
+    String address;
     EditText name;
     Button btn_add;
     public static final String EXTRA_DEVICE = "extra_device";
@@ -63,7 +64,7 @@ public class DeviceDetailsActivity extends AppCompatActivity {
 //        adapter.addView(lt);
     }
 
-    private void appendDeviceInfo(final MergeAdapter adapter, final BluetoothLeDevice device) {
+    private void appendDeviceInfo(final BluetoothLeDevice device) {
        /* final LinearLayout lt = (LinearLayout) getLayoutInflater().inflate(R.layout.list_item_view_device_info, null);
         final TextView tvName = (TextView) lt.findViewById(R.id.deviceName);
         final TextView tvAddress = (TextView) lt.findViewById(R.id.deviceAddress);
@@ -78,6 +79,7 @@ public class DeviceDetailsActivity extends AppCompatActivity {
         tvMajorClass.setText(device.getBluetoothDeviceMajorClassName());
         tvBondingState.setText(device.getBluetoothDeviceBondState());
 */
+        address = device.getAddress();
         final String supportedServices;
         if(device.getBluetoothDeviceKnownSupportedServices().isEmpty()){
             supportedServices = getString(R.string.no_known_services);
@@ -186,7 +188,7 @@ public class DeviceDetailsActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //DB.insert(getApplicationContext(),uuid,""+name.getText(),dis,major);
+                DB.insert(getApplicationContext(),address,""+name.getText(),dis,major);
 
                 Intent tt = new Intent(DeviceDetailsActivity.this,ScanActivity.class);
                 startActivity(tt);
@@ -258,7 +260,10 @@ public class DeviceDetailsActivity extends AppCompatActivity {
                 final IBeaconManufacturerData iBeaconData = new IBeaconManufacturerData(device);
 //                appendHeader(adapter, getString(R.string.header_ibeacon_data));
                 appendIBeaconInfo(iBeaconData);
+                appendDeviceInfo(device);
+
             }
+
 
         //}
 

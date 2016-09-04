@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final int DB_VERSION = 1;
     public static final String TABLE_NAME = "beacon";
     public static final String COL_ITEM_NAME = "item_name";
-    public static final String COL_UUID = "uuid";
+    public static final String COL_ADDRESS = "address";
     public static final String COL_DISTRANCE = "distrance";
     public static final String COL_MAJOR = "major";
 
@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_ITEM_NAME + " VARCHAR(255), " + COL_UUID + " VARCHAR(255), " + COL_DISTRANCE + " VARCHAR(255), " + COL_MAJOR + " VARCHAR(255));");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_ITEM_NAME + " VARCHAR(255), " + COL_ADDRESS + " VARCHAR(255), " + COL_DISTRANCE + " VARCHAR(255), " + COL_MAJOR + " VARCHAR(255));");
     }
 
 
