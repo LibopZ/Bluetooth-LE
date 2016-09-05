@@ -19,7 +19,7 @@ import uk.co.alt236.btlescan.R;
 public class Show_beacon extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView namebeacon;
-    TextView uuid;
+    TextView address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,10 @@ public class Show_beacon extends AppCompatActivity
         String[] res = DB.selectbeacon(getApplicationContext(),"ddd");
 
         namebeacon = (TextView) findViewById(R.id.name_beacon);
-        uuid = (TextView) findViewById(R.id.uuid);
+        address = (TextView) findViewById(R.id.uuid);
 
         namebeacon.setText(res[0]);
-        uuid.setText(res[1]);
+        address.setText(res[1]);
 
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

@@ -61,6 +61,7 @@ public class ScanActivity extends AppCompatActivity {
             });
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mBluetoothUtils = new BluetoothUtils(this);

@@ -36,4 +36,13 @@ public class DB {
         }
         return res;
     }
+
+    public static String[] selectListname(Context context){
+        DBHelper dbHelper = new DBHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DBHelper.TABLE_NAME+);
+
+    }
+
 }
