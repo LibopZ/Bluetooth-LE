@@ -36,7 +36,11 @@
             android:name=".activities.Show_beacon"
             android:label="@string/title_activity_show_beacon"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.ScanActivity"></activity>
+        <activity android:name=".activities.ScanActivity" />
+        <activity
+            android:name=".activities.IntroActivity"
+            android:label="@string/title_activity_intro"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

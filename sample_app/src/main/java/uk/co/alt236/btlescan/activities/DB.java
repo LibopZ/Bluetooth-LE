@@ -41,7 +41,16 @@ public class DB {
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DBHelper.TABLE_NAME+);
+        Cursor cursor = db.rawQuery("SELECT "+DBHelper.COL_ITEM_NAME +" FROM " + DBHelper.TABLE_NAME,null );
+
+        cursor.moveToFirst();
+
+        String[] name = new String[1];
+        while (!cursor.isAfterLast()){
+            name[0]= cursor.getString(cursor.getColumnIndex(DBHelper.COL_ITEM_NAME));
+
+        }
+        return  name;
 
     }
 
